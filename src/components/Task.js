@@ -31,9 +31,9 @@ const Task = ({ task, onDelete, onToggle }) => {
   console.log(task);
   return (
     <div>
-      {task.map((data) => (
+      {task.map((data, index) => (
         <Singletask
-          key={data.id}
+          key={index}
           singletask={data}
           onDelete={onDelete}
           onToggle={onToggle}

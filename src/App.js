@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+// import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Task from "./components/Task";
 import AddTask from "./components/AddTask";
 import Footer from "./components/Footer";
-import About from "./components/About";
+// import About from "./components/About";
 import "./App.css";
 
 const name = "tutorial";
@@ -81,39 +81,22 @@ const App = () => {
   };
 
   return (
-    <Router>
-      <div className="container">
-        <h1>start {name}</h1>
-        <Header
-          title="reactApp"
-          onAdd={() => setShowAddTask(!showAddTask)}
-          showAdd={showAddTask}
-        />
+    <div className="container">
+      <h1>start {name}</h1>
+      <Header
+        title="reactApp"
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
+      <AddTask onAdd={addTask} />
+      {task.length > 0 ? (
+        <Task task={task} onDelete={deleteTask} onToggle={toggleReminder} />
+      ) : (
+        "No task left"
+      )}
 
-        <Route
-          path="/"
-          exact
-          render={(props) => (
-            <>
-              {showAddTask && <AddTask onAdd={addTask} />}
-              {task.length > 0 ? (
-                <Task
-                  task={task}
-                  onDelete={deleteTask}
-                  onToggle={toggleReminder}
-                />
-              ) : (
-                "No task left"
-              )}
-            </>
-          )}
-        />
-
-        <Route path="/about" component={About}></Route>
-
-        <Footer />
-      </div>
-    </Router>
+      <Footer />
+    </div>
   );
 };
 

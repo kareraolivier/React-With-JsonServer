@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { a } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer>
       <p>Copyright &copy; karera 2021</p>
-      <Link to="/about">About</Link>
+      <a href="/about">About</a>
     </footer>
   );
 };
